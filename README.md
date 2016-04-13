@@ -51,6 +51,6 @@ This is similar to a standard multiple choice question, except the user can sele
 -------------
 | Matching |
 -------------
-User has n choices at left side and has n choices at right side; He try to match them on one to one basis. 
+User has an equal number of choices on the left side and the right side, and will be asked to pair them on a one-to-one basis. 
 
 
