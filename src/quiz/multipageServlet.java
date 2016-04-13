@@ -41,8 +41,7 @@ public class multipageServlet extends HttpServlet {
 		int corrretTotal = (int) session.getAttribute("correct");
 		int numOfQuestions = questions.size();
 		int total  = 0;
-		
-		//System.out.println("******************************");
+	
 		
 		HashMap<Integer,ArrayList<Object>> answers = (HashMap<Integer,ArrayList<Object>>) session.getAttribute("answersParams");
 		HashMap<Integer,ArrayList<Object>> userAnswers = (HashMap<Integer, ArrayList<Object>>) session.getAttribute("answers");
@@ -51,9 +50,9 @@ public class multipageServlet extends HttpServlet {
 			String type = (String) answers.get(index).get(0);
 			userAnswers.put(index, new ArrayList<Object>());
 			userAnswers.get(index).add(type);
-			//System.out.println("TYPE:"+answers.get(index).get(0));
+		
 			boolean immediateFeedback = true;
-			//System.out.println("*************");
+		
 			if(type.equals("question-response")||type.equals("fill-in-blank")||type.equals("multiple-choice")||type.equals("picture-response")){
 				String ansName = (String)answers.get(index).get(1);
 				String userAns = request.getParameter(ansName);
@@ -61,8 +60,7 @@ public class multipageServlet extends HttpServlet {
 				int thisScore = (int)questions.get(index).calculateScore(userAns);
 				if(checkAndRemove!=null){
 					String key = questions.get(index).getDescription();
-					//System.out.println("****fucking testing*********");
-					//System.out.println(checkAndRemove);
+					
 					int timeCorrect  =(int) checkAndRemove.get(key).get(0);
 					if(thisScore==questions.get(index).getTotalQuestions()){
 						timeCorrect++;
@@ -73,7 +71,6 @@ public class multipageServlet extends HttpServlet {
 				
 				total = total+thisScore;
 				
-				//System.out.println(total);
 			}
 			else{
 				ArrayList<String> answerList  = new ArrayList<String>();
@@ -87,8 +84,7 @@ public class multipageServlet extends HttpServlet {
 							answerList.add(ans);
 						}
 						
-						//System.out.println(answerName);
-						//System.out.println("answer"+j+">>>>"+request.getParameter(answerName));
+					
 						}
 					
 					int thisScore = (int)questions.get(index).calculateScore(answerList);
@@ -103,7 +99,7 @@ public class multipageServlet extends HttpServlet {
 					}
 					total = total+thisScore;
 				
-				//System.out.println(total);
+			
 			}
 			
 		
@@ -154,12 +150,6 @@ public class multipageServlet extends HttpServlet {
 					dispatch.forward(request, response);
 				
 				
-				
-//				//System.out.println("_____________++++++++++");
-//				RequestDispatcher dispatch = request.getRequestDispatcher("showResults.jsp");
-//				//System.out.println("&&&&&&&&&&&&&&&&&&&&&&");
-//				//System.out.println(dispatch);
-//				dispatch.forward(request, response);
 			}
 		}	
 	}
