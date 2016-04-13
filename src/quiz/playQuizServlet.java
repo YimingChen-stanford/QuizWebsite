@@ -42,9 +42,9 @@ public class playQuizServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String quizTitle = request.getParameter("quizTitle");
-		//System.out.println(quizTitle);
+	
 		String practiceMode = "no";
-		//(DBInterface)session.getAttribute("connection")
+		
 		
 			DBInterface db = new DBInterface();
 			HttpSession session = request.getSession();
@@ -64,7 +64,7 @@ public class playQuizServlet extends HttpServlet {
 			practiceMode = request.getParameter("practiceMode");
 			HashMap<Integer,ArrayList<Object>> userAnswers = new HashMap<Integer,ArrayList<Object>>();
 			HashMap<Integer,ArrayList<Object>> userAnswersParams = new HashMap<Integer,ArrayList<Object>>();
-			//System.out.println(practiceMode);
+			
 			session.setAttribute("immediateCorrect", immediateCorrect);
 			
 			session.setAttribute("onePage", onePage);
@@ -82,7 +82,7 @@ public class playQuizServlet extends HttpServlet {
 			Integer num = 0;
 			session.setAttribute("totalNumofQuestions",totalNumofQuestions);
 			db.DBShutDown();
-			//System.out.println(practiceMode+"   "+"fucking testing");
+		
 		if(practiceMode==null||!practiceMode.equals("yes")){
 			// determinin onePage vs MultiPages
 			if(onePage){
@@ -98,7 +98,7 @@ public class playQuizServlet extends HttpServlet {
 					session.setAttribute("immediateCorrect",false);
 				}
 				request.setAttribute("index", 0);
-				//String nextPage = questions.get(0).getType()+".jsp";
+			
 				
 				RequestDispatcher dispatch = request.getRequestDispatcher("multiPage.jsp");
 				dispatch.forward(request, response);
@@ -115,7 +115,7 @@ public class playQuizServlet extends HttpServlet {
 			session.setAttribute("checkAndRemove", checkAndRemove);
 			session.setAttribute("practiceMode", true);
 			
-			////System.out.println(checkAndRemove);
+		
 			RequestDispatcher dispatch = request.getRequestDispatcher("pacticeModeServlet");
 			dispatch.forward(request, response);
 		}
