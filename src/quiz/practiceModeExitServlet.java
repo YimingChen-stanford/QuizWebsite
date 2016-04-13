@@ -54,9 +54,7 @@ public class practiceModeExitServlet extends HttpServlet {
 				String quizTitle = (String) session.getAttribute("quizTitle");
 				String link = "quizSummary.jsp?quizTitle=" + quizTitle;
 				db.DBShutDown();
-				// <a href
-				// ="quizSummary.jsp?quizTitle=<%=(String)session.getAttribute("quizTitle")%>">exit
-				// practice mode</a >
+			
 				session.setAttribute("practiceMode", false);
 				RequestDispatcher dispatch = request.getRequestDispatcher(link);
 				dispatch.forward(request, response);
