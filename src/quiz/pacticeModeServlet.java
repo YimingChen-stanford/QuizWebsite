@@ -49,8 +49,7 @@ public class pacticeModeServlet extends HttpServlet {
 		else{
 
 			HashMap<String,ArrayList<Object>> checkAndRemove = (HashMap<String, ArrayList<Object>>) session.getAttribute("checkAndRemove");
-			//System.out.println("****fucking testing again*&*$#*********");
-			//System.out.println(checkAndRemove);
+			
 			Iterator it = checkAndRemove.entrySet().iterator();
 			while (it.hasNext()) {
 				Map.Entry pair = (Map.Entry)it.next();
@@ -58,7 +57,7 @@ public class pacticeModeServlet extends HttpServlet {
 				if((int)checkAndRemove.get(key).get(0)>=3){
 					int index = (int) checkAndRemove.get(key).get(1);
 					questions.remove(index);
-					//System.out.println("one question removed!");
+					
 				}
 			}
 
